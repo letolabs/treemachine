@@ -1,0 +1,7 @@
+language: java
+jdk:
+    - openjdk6
+    - oraclejdk7
+script:
+    - mvn -f pom.serverplugins.xml clean compile package jar:jar
+notifications:
