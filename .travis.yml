@@ -4,4 +4,20 @@ jdk:
     - oraclejdk7
 script:
     - mvn -f pom.serverplugins.xml clean compile package jar:jar
+
+before_script:
+  - unset SOME_VAR
+
+env:
+  global:
+    - JAVA_OPTS=""
+
+install: /bin/true
 notifications:
+  irc:
+    channels:
+#      - "irc.freenode.org#opentree"
+    on_success: change
+    on_failure: always
+    template:
+      - "%{repository} (%{branch}:%{commit} by %{author}): %{message} (%{build_url})"
